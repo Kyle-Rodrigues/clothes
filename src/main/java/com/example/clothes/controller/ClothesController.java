@@ -37,12 +37,12 @@ public class ClothesController {
         model.addAttribute("brands", brands);
         log.info("brands converted to string. {}", brands);
     }
-
     @ModelAttribute
     public Item item() {
         return Item.builder()
                 .build();
     }
+
 
     @PostMapping
     public String processItemAddition(@Valid Item item, Errors errors){
@@ -50,6 +50,6 @@ public class ClothesController {
             return "clothes";
         }
         itemRepository.save(item);
-        return "redirect:/";
+        return "redirect:/clothesList";
     }
 }
