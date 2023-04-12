@@ -3,6 +3,7 @@ package com.example.clothes.controller;
 import java.util.EnumSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -26,6 +27,7 @@ public class ClothesController {
     @Autowired
     private ItemRepository itemRepository;
 
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     @GetMapping
     public String clothes(){
         return "clothes";
@@ -44,6 +46,7 @@ public class ClothesController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     @PostMapping
     public String processItemAddition(@Valid Item item, Errors errors){
         if(errors.hasErrors()){

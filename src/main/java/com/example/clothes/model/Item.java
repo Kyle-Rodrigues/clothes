@@ -25,9 +25,11 @@ public class Item {
     @NotBlank
     private String name;
     @Min(2021)
+    
     private int yearCreated;
     @Min(1000)
     private int price;
+
     private Brand brand;
 
     public enum Brand {

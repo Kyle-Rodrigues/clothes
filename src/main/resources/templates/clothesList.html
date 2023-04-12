@@ -29,6 +29,12 @@
                     <td th:text="${item.yearCreated}"></td>
                     <td th:text="'$' + ${item.price}"></td>
                     <td th:text="${item.brand}"></td>
+                    <td>
+                        <form th:action="@{/clothesList/deleteItem}" method="post">
+                            <input type="hidden" name="id" th:value="${item.id}" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
