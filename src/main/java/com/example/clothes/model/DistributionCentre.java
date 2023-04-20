@@ -32,4 +32,8 @@ public class DistributionCentre {
     
     @OneToMany(mappedBy = "distributionCentre")
     private List<Item> itemsAvailable;
+
+    public long getId(){
+        return id;
+    }
 }

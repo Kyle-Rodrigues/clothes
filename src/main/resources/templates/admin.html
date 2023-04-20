@@ -126,6 +126,7 @@
                                     <td th:text="${item.yearCreated}"></td>
                                     <td th:text="'$' + ${item.price}"></td>
                                     <td th:text="${item.brand}"></td>
+                                    <td th:text="${item.quantity}"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -158,6 +159,9 @@
                             </p>
                             <p class="card-text">
                                 <span th:text="${item.brand}">Brand</span>
+                            </p>
+                            <p class="card-text">
+                                <span th:text="${item.quantity}">Brand</span>
                             </p>
                         </div>
                     </div>

@@ -66,14 +66,21 @@ public class AdminController {
                 .build();
     }
 
-    @PostMapping 
-    public String searchByBrandAndName(@RequestBody searchDto searchParams){
+    @PostMapping
+    public String searchByBrandAndName(@ModelAttribute searchDto searchParams, Model model){
         var brand = searchParams.getBrand();
         var name = searchParams.getName();
         var searchResults = restTemplate.getForObject("http://localhost:8082/distribution-centre/items/" + brand + "/" + name, Item[].class);
-
         List<Item> items = Arrays.asList(searchResults);
+
         itemRepository.saveAll(items);
+
+        for (Item item : items) {
+            var itemId = item.getId();
+            var distributionCentreId = item.getDistributionCentreId();
+        
+            restTemplate.delete("http://localhost:8082/distribution-centre/items/" + itemId);
+        }
         return "admin";
     }
 }

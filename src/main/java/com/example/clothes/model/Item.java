@@ -42,6 +42,7 @@ public class Item {
     private DistributionCentre distributionCentre;
 
     private Brand brand;
+    private int quantity;
 
     public enum Brand {
         Nike("Nike"), Adidas("Addidas"), Gucci("Gucci");
@@ -49,5 +50,11 @@ public class Item {
         private Brand(String title){
             this.title = title;
         }
+    }
+    public long getId(){
+        return id;
+    }
+    public long getDistributionCentreId(){
+        return distributionCentre.getId();
     }
 }
