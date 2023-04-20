@@ -4,10 +4,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.User;
 
 import com.example.clothes.model.Item;
 import com.example.clothes.model.Item.Brand;
 import com.example.clothes.repository.ItemRepository;
+import com.example.clothes.repository.UserRepository;
 
 @SpringBootApplication
 public class ClothesApplication {
@@ -17,7 +19,7 @@ public class ClothesApplication {
 	}
 
 	@Bean
-	public CommandLineRunner dataLoader(ItemRepository repository){
+	public CommandLineRunner dataLoader(ItemRepository repository, UserRepository userRepository){
 		return args -> {
 			repository.save(Item.builder()
 				.name("Pants")
